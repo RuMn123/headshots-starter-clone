@@ -30,16 +30,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {/* Google tag (gtag.js) */}
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-6FB9EKMXN0" strategy="afterInteractive" />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-6FB9EKMXN0');
-        `}
-      </Script>
+      {/* Google Analytics 代码 */}
+      <Script 
+        src="https://www.googletagmanager.com/gtag/js?id=G-6FB9EKMXN0" 
+        strategy="afterInteractive"
+      />
+      <Script 
+        id="google-analytics" 
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-6FB9EKMXN0');
+          `
+        }}
+      />
       <body className="min-h-screen flex flex-col bg-background">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <AnnouncementBar />
