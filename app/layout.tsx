@@ -7,7 +7,7 @@ import AnnouncementBar from "@/components/homepage/announcement-bar"
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "@/components/homepage/theme-provider"
 import { validateConfig } from "@/lib/config";
-import Script from "next/script";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 // Validate configuration at app initialization
 validateConfig();
@@ -30,24 +30,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {/* Google Analytics 代码 */}
-      <Script 
-        src="https://www.googletagmanager.com/gtag/js?id=G-6FB9EKMXN0" 
-        strategy="afterInteractive"
-      />
-      <Script 
-        id="google-analytics" 
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-6FB9EKMXN0');
-          `
-        }}
-      />
       <body className="min-h-screen flex flex-col bg-background">
+        <GoogleAnalytics />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <AnnouncementBar />
           {/* Remove the section wrapper as it's interfering with sticky positioning */}
