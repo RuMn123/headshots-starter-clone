@@ -19,7 +19,7 @@ export const viewport = {
 };
 
 export const metadata = {
-  title: "Headshots AI",
+  title: "Transform Your Photos Into Global Art Styles",
   description: "Generate awesome headshots in minutes using AI",
 };
 
